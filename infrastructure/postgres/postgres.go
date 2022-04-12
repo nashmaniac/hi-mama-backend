@@ -8,8 +8,8 @@ import (
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 
-	"github.com/nashmaniac/golang-application-template/adapters"
-	"github.com/nashmaniac/golang-application-template/models"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/adapters"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/models"
 )
 
 type postgresRepository struct {

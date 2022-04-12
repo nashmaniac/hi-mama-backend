@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/nashmaniac/golang-application-template/models"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/models"
 	"golang.org/x/crypto/bcrypt"
 	"gorm.io/gorm"
 )

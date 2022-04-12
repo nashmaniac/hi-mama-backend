@@ -3,8 +3,8 @@ package usecases
 import (
 	"context"
 
-	"github.com/nashmaniac/golang-application-template/adapters"
-	"github.com/nashmaniac/golang-application-template/config"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/adapters"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/config"
 )
 
 type usecases struct {

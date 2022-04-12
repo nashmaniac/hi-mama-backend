@@ -7,10 +7,10 @@ import (
 	"os"
 	"path"
 
-	"github.com/nashmaniac/golang-application-template/config"
-	"github.com/nashmaniac/golang-application-template/endpoints/app"
-	"github.com/nashmaniac/golang-application-template/infrastructure/postgres"
-	"github.com/nashmaniac/golang-application-template/usecases"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/config"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/endpoints/app"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/infrastructure/postgres"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/usecases"
 	"github.com/sherifabdlnaby/configuro"
 )
 

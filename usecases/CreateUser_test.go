@@ -5,9 +5,9 @@ import (
 	"fmt"
 
 	"github.com/golang/mock/gomock"
-	"github.com/nashmaniac/golang-application-template/adapters"
-	"github.com/nashmaniac/golang-application-template/models"
-	"github.com/nashmaniac/golang-application-template/usecases"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/adapters"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/models"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/usecases"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

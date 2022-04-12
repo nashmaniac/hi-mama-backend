@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gin-gonic/gin"
-	"github.com/nashmaniac/golang-application-template/models"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/models"
 )
 
 func (v1 *apiV1) Me(c *gin.Context) {

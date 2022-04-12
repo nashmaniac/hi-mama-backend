@@ -4,8 +4,8 @@ import (
 	"testing"
 
 	"github.com/golang/mock/gomock"
-	"github.com/nashmaniac/golang-application-template/config"
-	"github.com/nashmaniac/golang-application-template/mocks"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/config"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/mocks"
 	. "github.com/onsi/ginkgo"
 	. "github.com/onsi/gomega"
 )

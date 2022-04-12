@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
-	"github.com/nashmaniac/golang-application-template/models"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/models"
 )
 
 type createUserInput struct {

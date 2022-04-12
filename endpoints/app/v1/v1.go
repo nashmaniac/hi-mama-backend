@@ -2,7 +2,7 @@ package v1
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/nashmaniac/golang-application-template/adapters"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/adapters"
 )
 
 type ApiV1 interface {

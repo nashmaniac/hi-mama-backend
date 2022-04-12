@@ -3,7 +3,7 @@ package postgres
 import (
 	"context"
 
-	"github.com/nashmaniac/golang-application-template/models"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/models"
 )
 
 func (r *postgresRepository) CreateUser(

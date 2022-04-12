@@ -6,12 +6,13 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt"
-	"github.com/nashmaniac/golang-application-template/adapters"
-	"github.com/nashmaniac/golang-application-template/config"
-	v1 "github.com/nashmaniac/golang-application-template/endpoints/app/v1"
-	"github.com/nashmaniac/golang-application-template/models"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/adapters"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/config"
+	v1 "github.com/nashmaniac/hi-mama/hi-mama-backend/endpoints/app/v1"
+	"github.com/nashmaniac/hi-mama/hi-mama-backend/models"
 )
 
 type appEndPoints struct {
@@ -65,11 +66,16 @@ func NewEndpoints(
 		return nil, err
 	}
 	r := gin.Default()
+	config := cors.DefaultConfig()
+	config.AllowAllOrigins = true
+	config.AllowHeaders = []string{"authorization"}
+	config.ExposeHeaders = []string{"authorization"}
+	r.Use(cors.New(config))
 
 	v1 := r.Group("/v1")
 	unAuthorizedV1 := v1
 	unAuthorizedV1.GET("/healthz", apiV1.Healthz)
-	unAuthorizedV1.POST("/create-user", apiV1.CreateUser)
+	unAuthorizedV1.POST("/signup", apiV1.CreateUser)
 	unAuthorizedV1.POST("/login", apiV1.LoginUser)
 
 	authorizedGroupV1 := v1
