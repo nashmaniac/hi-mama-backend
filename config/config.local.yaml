@@ -1,0 +1,9 @@
+database:
+  username: postgres
+  host: localhost
+  port: 5432
+  password: password
+  name: testdb
+application:
+  port: 8080
+secretkey: "hello-world"
