@@ -2,7 +2,6 @@ package app
 
 import (
 	"fmt"
-	"log"
 	"net/http"
 	"strings"
 
@@ -25,7 +24,6 @@ func ValidateToken(config *config.Config) gin.HandlerFunc {
 		authorizationToken := c.Request.Header.Get("authorization")
 		tokens := strings.Split(authorizationToken, " ")
 		tokenString := tokens[1]
-		log.Println(tokenString)
 
 		token, err := jwt.ParseWithClaims(tokenString, &jwt.StandardClaims{}, func(token *jwt.Token) (interface{}, error) {
 			if _, ok := token.Method.(*jwt.SigningMethodHMAC); !ok {
@@ -50,7 +48,6 @@ func ValidateToken(config *config.Config) gin.HandlerFunc {
 			c.Abort()
 			return
 		}
-		log.Println(claims.Subject)
 		c.Set("current-user-id", claims.Subject)
 		c.Next()
 	}
@@ -68,8 +65,9 @@ func NewEndpoints(
 	r := gin.Default()
 	config := cors.DefaultConfig()
 	config.AllowAllOrigins = true
-	config.AllowHeaders = []string{"authorization"}
-	config.ExposeHeaders = []string{"authorization"}
+	config.AllowHeaders = []string{"authorization", "content-type"}
+	config.ExposeHeaders = []string{"authorization", "content-type"}
+	config.AllowMethods = []string{"GET", "PUT", "POST", "DELETE", "PATCH", "OPTIONS"}
 	r.Use(cors.New(config))
 
 	v1 := r.Group("/v1")
@@ -81,6 +79,10 @@ func NewEndpoints(
 	authorizedGroupV1 := v1
 	authorizedGroupV1.Use(ValidateToken(configuration))
 	authorizedGroupV1.GET("/me", apiV1.Me)
+	authorizedGroupV1.POST("/clock-in", apiV1.ClockIn)
+	authorizedGroupV1.POST("/clock-out", apiV1.ClockOut)
+	authorizedGroupV1.GET("/entries", apiV1.GetEntries)
+	authorizedGroupV1.GET("/ongoing", apiV1.GetOngoing)
 
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{

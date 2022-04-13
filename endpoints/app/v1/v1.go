@@ -10,6 +10,10 @@ type ApiV1 interface {
 	CreateUser(c *gin.Context)
 	LoginUser(c *gin.Context)
 	Me(c *gin.Context)
+	ClockIn(c *gin.Context)
+	ClockOut(c *gin.Context)
+	GetEntries(c *gin.Context)
+	GetOngoing(c *gin.Context)
 }
 
 type apiV1 struct {

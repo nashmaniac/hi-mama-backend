@@ -1,0 +1,26 @@
+mode: set
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/GetHealthz.go:8.30,13.2 4 0
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/GetTimeList.go:12.27,14.2 1 0
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/LoginUser.go:16.20,18.16 2 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/LoginUser.go:21.2,21.95 1 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/LoginUser.go:25.2,32.16 3 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/LoginUser.go:35.2,38.16 3 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/LoginUser.go:42.2,42.17 1 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/LoginUser.go:18.16,20.3 1 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/LoginUser.go:21.95,23.3 1 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/LoginUser.go:32.16,34.3 1 0
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/LoginUser.go:38.16,40.3 1 0
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/usecases.go:19.30,24.2 1 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/ClockIn.go:13.26,15.16 2 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/ClockIn.go:18.2,18.17 1 0
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/ClockIn.go:15.16,17.3 1 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/ClockOut.go:12.26,14.2 1 0
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/CreateUser.go:17.25,21.59 2 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/CreateUser.go:24.2,24.17 1 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/CreateUser.go:28.2,29.16 2 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/CreateUser.go:32.2,37.16 3 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/CreateUser.go:40.2,40.18 1 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/CreateUser.go:21.59,23.3 1 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/CreateUser.go:24.17,26.3 1 1
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/CreateUser.go:29.16,31.3 1 0
+github.com/nashmaniac/hi-mama/hi-mama-backend/usecases/CreateUser.go:37.16,39.3 1 1
