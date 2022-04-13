@@ -19,7 +19,7 @@ func readConfiguration() (*config.Config, error) {
 	configPath := path.Join(wd, "config")
 	env, ok := os.LookupEnv("environment")
 	if !ok {
-		env = "local"
+		env = "heroku"
 	}
 	configFilePath := fmt.Sprintf("%s/config.%s.yaml", configPath, env)
 	configOptions := configuro.WithLoadFromConfigFile(configFilePath, true)
