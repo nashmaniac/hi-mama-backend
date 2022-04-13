@@ -1,9 +1,9 @@
 database:
-  username: hawnmaduhfuvdx
-  host: ec2-34-207-12-160.compute-1.amazonaws.com
+  username: whdjoixntqhpor
+  host: ec2-52-3-200-138.compute-1.amazonaws.com
   port: 5432
-  password: 032d45d527f8ab7849fba46b187e11e8b5e4ead38e4d78fdec3c7f4c7ee295d1
-  name: ddg4gvq79o69l1
+  password: e13641e014ab0837ce00d6cbdbcb0f404466eb9bc1156257175cb396b7e1e9ac
+  name: dfe9nvf1s0o5pr
 application:
   port: 8080
 secretkey: "hello-world"
