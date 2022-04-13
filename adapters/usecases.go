@@ -2,6 +2,7 @@ package adapters
 
 import (
 	"context"
+	"time"
 
 	"github.com/nashmaniac/hi-mama/hi-mama-backend/models"
 )
@@ -16,4 +17,5 @@ type Usecases interface {
 	ClockOut(ctx context.Context, username string) (*models.Entry, error)
 	FindOngoingTime(ctx context.Context, username string) (*models.Entry, error)
 	GetTimeList(ctx context.Context, username string) ([]models.Entry, error)
+	EditEntry(ctx context.Context, id uint, clockIn time.Time, clockOut *time.Time) (*models.Entry, error)
 }

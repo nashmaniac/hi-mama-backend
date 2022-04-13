@@ -82,6 +82,7 @@ func NewEndpoints(
 	authorizedGroupV1.POST("/clock-in", apiV1.ClockIn)
 	authorizedGroupV1.POST("/clock-out", apiV1.ClockOut)
 	authorizedGroupV1.GET("/entries", apiV1.GetEntries)
+	authorizedGroupV1.PUT("/entries/:id", apiV1.EditEntry)
 	authorizedGroupV1.GET("/ongoing", apiV1.GetOngoing)
 
 	r.GET("/ping", func(c *gin.Context) {

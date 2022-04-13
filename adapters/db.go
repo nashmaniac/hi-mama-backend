@@ -16,4 +16,5 @@ type PeristenceStore interface {
 	CreateEntry(ctx context.Context, entry *models.Entry) (*models.Entry, error)
 	SaveEntry(ctx context.Context, entry *models.Entry) (*models.Entry, error)
 	FindEntries(ctx context.Context, user *models.User) ([]models.Entry, error)
+	FindEntryById(ctx context.Context, id uint) (*models.Entry, error)
 }

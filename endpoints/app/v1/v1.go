@@ -14,6 +14,7 @@ type ApiV1 interface {
 	ClockOut(c *gin.Context)
 	GetEntries(c *gin.Context)
 	GetOngoing(c *gin.Context)
+	EditEntry(c *gin.Context)
 }
 
 type apiV1 struct {
