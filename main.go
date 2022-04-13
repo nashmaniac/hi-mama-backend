@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"fmt"
-	"log"
 	"os"
 	"path"
 
@@ -73,7 +72,11 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	log.Println(fmt.Sprintf("running server on port %d", configuration.Application.Port))
-	endpoints.Server.Run(fmt.Sprintf(":%d", configuration.Application.Port))
+
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	endpoints.Server.Run(":" + port)
 
 }
