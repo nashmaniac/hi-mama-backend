@@ -7,6 +7,7 @@ package mocks
 import (
 	context "context"
 	reflect "reflect"
+	time "time"
 
 	gomock "github.com/golang/mock/gomock"
 	models "github.com/nashmaniac/hi-mama/hi-mama-backend/models"
@@ -35,6 +36,36 @@ func (m *MockUsecases) EXPECT() *MockUsecasesMockRecorder {
 	return m.recorder
 }
 
+// ClockIn mocks base method.
+func (m *MockUsecases) ClockIn(arg0 context.Context, arg1 string) (*models.Entry, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ClockIn", arg0, arg1)
+	ret0, _ := ret[0].(*models.Entry)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ClockIn indicates an expected call of ClockIn.
+func (mr *MockUsecasesMockRecorder) ClockIn(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ClockIn", reflect.TypeOf((*MockUsecases)(nil).ClockIn), arg0, arg1)
+}
+
+// ClockOut mocks base method.
+func (m *MockUsecases) ClockOut(arg0 context.Context, arg1 string) (*models.Entry, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "ClockOut", arg0, arg1)
+	ret0, _ := ret[0].(*models.Entry)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// ClockOut indicates an expected call of ClockOut.
+func (mr *MockUsecasesMockRecorder) ClockOut(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "ClockOut", reflect.TypeOf((*MockUsecases)(nil).ClockOut), arg0, arg1)
+}
+
 // CreateUser mocks base method.
 func (m *MockUsecases) CreateUser(arg0 context.Context, arg1, arg2 string) (*models.User, error) {
 	m.ctrl.T.Helper()
@@ -50,6 +81,36 @@ func (mr *MockUsecasesMockRecorder) CreateUser(arg0, arg1, arg2 interface{}) *go
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "CreateUser", reflect.TypeOf((*MockUsecases)(nil).CreateUser), arg0, arg1, arg2)
 }
 
+// EditEntry mocks base method.
+func (m *MockUsecases) EditEntry(arg0 context.Context, arg1 uint, arg2 time.Time, arg3 *time.Time) (*models.Entry, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "EditEntry", arg0, arg1, arg2, arg3)
+	ret0, _ := ret[0].(*models.Entry)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// EditEntry indicates an expected call of EditEntry.
+func (mr *MockUsecasesMockRecorder) EditEntry(arg0, arg1, arg2, arg3 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "EditEntry", reflect.TypeOf((*MockUsecases)(nil).EditEntry), arg0, arg1, arg2, arg3)
+}
+
+// FindOngoingTime mocks base method.
+func (m *MockUsecases) FindOngoingTime(arg0 context.Context, arg1 string) (*models.Entry, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "FindOngoingTime", arg0, arg1)
+	ret0, _ := ret[0].(*models.Entry)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// FindOngoingTime indicates an expected call of FindOngoingTime.
+func (mr *MockUsecasesMockRecorder) FindOngoingTime(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "FindOngoingTime", reflect.TypeOf((*MockUsecases)(nil).FindOngoingTime), arg0, arg1)
+}
+
 // GetHealthz mocks base method.
 func (m *MockUsecases) GetHealthz(arg0 context.Context, arg1 string) (map[string]string, error) {
 	m.ctrl.T.Helper()
@@ -63,6 +124,21 @@ func (m *MockUsecases) GetHealthz(arg0 context.Context, arg1 string) (map[string
 func (mr *MockUsecasesMockRecorder) GetHealthz(arg0, arg1 interface{}) *gomock.Call {
 	mr.mock.ctrl.T.Helper()
 	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetHealthz", reflect.TypeOf((*MockUsecases)(nil).GetHealthz), arg0, arg1)
+}
+
+// GetTimeList mocks base method.
+func (m *MockUsecases) GetTimeList(arg0 context.Context, arg1 string) ([]models.Entry, error) {
+	m.ctrl.T.Helper()
+	ret := m.ctrl.Call(m, "GetTimeList", arg0, arg1)
+	ret0, _ := ret[0].([]models.Entry)
+	ret1, _ := ret[1].(error)
+	return ret0, ret1
+}
+
+// GetTimeList indicates an expected call of GetTimeList.
+func (mr *MockUsecasesMockRecorder) GetTimeList(arg0, arg1 interface{}) *gomock.Call {
+	mr.mock.ctrl.T.Helper()
+	return mr.mock.ctrl.RecordCallWithMethodType(mr.mock, "GetTimeList", reflect.TypeOf((*MockUsecases)(nil).GetTimeList), arg0, arg1)
 }
 
 // LoginUser mocks base method.
