@@ -14,7 +14,7 @@ import (
 	"gorm.io/gorm"
 )
 
-var _ = Describe("ClockIn", func() {
+var _ = Describe("ClockOut", func() {
 	var ctx context.Context
 	var u adapters.Usecases
 	var username string
@@ -34,7 +34,7 @@ var _ = Describe("ClockIn", func() {
 				nil,
 				fmt.Errorf("error in db"),
 			).Times(1)
-			_, err = u.ClockIn(ctx, username)
+			_, err = u.ClockOut(ctx, username)
 			Expect(err).ToNot(BeNil())
 		})
 	})
@@ -48,12 +48,12 @@ var _ = Describe("ClockIn", func() {
 				nil,
 				fmt.Errorf("user not found"),
 			).Times(1)
-			_, err = u.ClockIn(ctx, username)
+			_, err = u.ClockOut(ctx, username)
 			Expect(err).ToNot(BeNil())
 		})
 	})
 
-	When("there is already unfinished timing present", func() {
+	When("there is no timing present", func() {
 		It("fails", func() {
 			username := "test-username"
 			userId := 1
@@ -71,26 +71,52 @@ var _ = Describe("ClockIn", func() {
 				nil,
 			).Times(1)
 
-			entry := &models.Entry{
-				UserID:      user.ID,
-				ClockInTime: time.Now(),
+			mockPersistenceStore.EXPECT().FindOngoingTime(
+				ctx,
+				*user,
+			).Return(
+				nil,
+				gorm.ErrRecordNotFound,
+			).Times(1)
+
+			_, err = u.ClockOut(ctx, username)
+			Expect(err).ToNot(BeNil())
+		})
+	})
+
+	When("there is no entry present", func() {
+		It("fails", func() {
+			username := "test-username"
+			userId := 1
+			user := &models.User{
+				Username: username,
+				Model: gorm.Model{
+					ID: uint(userId),
+				},
 			}
+			mockPersistenceStore.EXPECT().FindUserByUsername(
+				ctx,
+				username,
+			).Return(
+				user,
+				nil,
+			).Times(1)
 
 			mockPersistenceStore.EXPECT().FindOngoingTime(
 				ctx,
 				*user,
 			).Return(
-				entry,
+				nil,
 				nil,
 			).Times(1)
 
-			_, err = u.ClockIn(ctx, username)
+			_, err = u.ClockOut(ctx, username)
 			Expect(err).ToNot(BeNil())
 		})
 	})
 
-	Context("there is no timing ongoing", func() {
-		When("creating fails", func() {
+	Context("there is existing timing present", func() {
+		When("updating", func() {
 			It("fails", func() {
 				username := "test-username"
 				userId := 1
@@ -99,6 +125,11 @@ var _ = Describe("ClockIn", func() {
 					Model: gorm.Model{
 						ID: uint(userId),
 					},
+				}
+
+				entry := &models.Entry{
+					UserID: user.ID,
+					User:   *user,
 				}
 				mockPersistenceStore.EXPECT().FindUserByUsername(
 					ctx,
@@ -112,11 +143,11 @@ var _ = Describe("ClockIn", func() {
 					ctx,
 					*user,
 				).Return(
-					nil,
+					entry,
 					nil,
 				).Times(1)
 
-				mockPersistenceStore.EXPECT().CreateEntry(
+				mockPersistenceStore.EXPECT().SaveEntry(
 					ctx,
 					gomock.Any(),
 				).Return(
@@ -124,12 +155,12 @@ var _ = Describe("ClockIn", func() {
 					fmt.Errorf("db error"),
 				).Times(1)
 
-				_, err = u.ClockIn(ctx, username)
+				_, err = u.ClockOut(ctx, username)
 				Expect(err).ToNot(BeNil())
 			})
 		})
 
-		When("creating is successful", func() {
+		When("saving is successful", func() {
 			It("passes", func() {
 				username := "test-username"
 				userId := 1
@@ -146,19 +177,21 @@ var _ = Describe("ClockIn", func() {
 					user,
 					nil,
 				).Times(1)
-
+				currentTime := time.Now()
+				entry := &models.Entry{
+					UserID:       user.ID,
+					User:         *user,
+					ClockOutTime: &currentTime,
+				}
 				mockPersistenceStore.EXPECT().FindOngoingTime(
 					ctx,
 					*user,
 				).Return(
-					nil,
+					entry,
 					nil,
 				).Times(1)
-				entry := &models.Entry{
-					UserID:      user.ID,
-					ClockInTime: time.Now(),
-				}
-				mockPersistenceStore.EXPECT().CreateEntry(
+
+				mockPersistenceStore.EXPECT().SaveEntry(
 					ctx,
 					gomock.Any(),
 				).Return(
@@ -166,7 +199,7 @@ var _ = Describe("ClockIn", func() {
 					nil,
 				).Times(1)
 
-				entry, err = u.ClockIn(ctx, username)
+				entry, err = u.ClockOut(ctx, username)
 				Expect(err).To(BeNil())
 				Expect(entry).ToNot(BeNil())
 			})
