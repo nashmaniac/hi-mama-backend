@@ -5,6 +5,10 @@
 * Frontend Link: https://hi-mama-checkin.herokuapp.com/
 * Backend Api Link: https://secure-dawn-73962.herokuapp.com/v1/healthz
 * Google drive Link: https://drive.google.com/drive/folders/1zVTeYAElRcV9PiwM-3FIpKzfFnLlwarn?usp=sharing
+* Github Link
+
+    * https://github.com/nashmaniac/hi-mama-frontend
+    * https://github.com/nashmaniac/hi-mama-backend
 
 ### Code challenge
 
